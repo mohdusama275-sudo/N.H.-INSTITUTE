@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>N.H. Institute of Computer Education | Premium IT Training</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== LUXURY PREMIUM COLOR PALETTE ===== */
+        :root {
+            --gold: #D4AF37;
+            --saffron: #FF9933;
+            --burgundy: #800020;
+            --cream: #FFFDD0;
+            --charcoal: #36454F;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --champagne: #F7E7CE;
+            --copper: #B87333;
+        }
+        
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+        }
+        
+        /* ===== PRELOADER ===== */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+        
+        .preloader-content {
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .preloader h1 {
+            font-size: 56px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease;
+            letter-spacing: 8px;
+        }
+        
+        .preloader p {
+            color: var(--cream);
+            letter-spacing: 6px;
+            animation: fadeIn 2.5s ease;
+            font-size: 18px;
+        }
+        
+        .preloader span {
+            color: var(--saffron);
+        }
+        
+        /* ===== CUSTOM CURSOR - HIDE ON MOBILE ===== */
+        .cursor {
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+            box-shadow: 0 0 20px var(--gold);
+        }
+        
+        /* ===== MOBILE MENU ===== */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 28px;
+            color: var(--gold);
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            transition: color 0.3s;
+            z-index: 1001;
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.5s ease;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+        }
+        
+        .navbar.scrolled {
+            background: var(--black);
+            padding: 20px 60px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-decoration: none;
+            line-height: 1.2;
+        }
+        
+        .logo span {
+            color: var(--cream);
+            font-size: 14px;
+            display: block;
+            letter-spacing: 3px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+            position: relative;
+            white-space: nowrap;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .book-btn {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 12px 30px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            white-space: nowrap;
+            border-radius: 0;
+        }
+        
+        .book-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.9)),
+                        url('https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+        
+        .hero-content {
+            max-width: 1000px;
+            padding: 20px;
+            width: 100%;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            letter-spacing: 10px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .hero-title {
+            font-size: 90px;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+        
+        .hero-title span {
+            color: var(--gold);
+        }
+        
+        .hero-year {
+            font-size: 24px;
+            color: var(--saffron);
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .hero-desc {
+            font-size: 18px;
+            color: var(--cream);
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 15px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: var(--black);
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border: 2px solid var(--gold);
+            transition: all 0.3s;
+            display: inline-block;
+            border-radius: 0;
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--cream);
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border: 2px solid var(--cream);
+            transition: all 0.3s;
+            display: inline-block;
+            border-radius: 0;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--cream);
+            color: var(--black);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator i {
+            color: var(--gold);
+            font-size: 24px;
+        }
+        
+        /* ===== OFFER BANNER ===== */
+        .offer-banner {
+            background: linear-gradient(135deg, var(--gold), var(--saffron));
+            padding: 60px 0;
+            text-align: center;
+            color: var(--black);
+        }
+        
+        .offer-banner h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+        
+        .offer-banner .offer-highlight {
+            font-size: 72px;
+            font-weight: 800;
+            color: var(--black);
+            text-shadow: 2px 2px 0 var(--cream);
+        }
+        
+        .offer-banner p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        /* ===== COURSES SECTION ===== */
+        .courses {
+            padding: 120px 0;
+            background: linear-gradient(rgba(10,10,10,0.95), rgba(10,10,10,0.95)),
+                        url('https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-subtitle {
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .section-title {
+            font-size: 48px;
+            color: var(--cream);
+            margin-bottom: 20px;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .course-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+            border: 1px solid rgba(212,175,55,0.2);
+            position: relative;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+        
+        .course-icon {
+            color: var(--gold);
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .course-category {
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .course-title {
+            font-size: 24px;
+            color: var(--cream);
+            margin-bottom: 15px;
+        }
+        
+        .course-description {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .course-features li {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .course-features i {
+            color: var(--gold);
+            margin-right: 10px;
+        }
+        
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(212,175,55,0.2);
+            padding-top: 20px;
+        }
+        
+        .course-price {
+            font-size: 24px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .course-price span {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .add-to-cart {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 0;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        .course-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== CART SECTION ===== */
+        .cart-section {
+            background: var(--black);
+            border: 1px solid var(--gold);
+            padding: 40px;
+            margin: 80px 0;
+            border-radius: 10px;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gold);
+        }
+        
+        .cart-header h3 {
+            color: var(--gold);
+            font-size: 28px;
+        }
+        
+        .cart-header span {
+            color: var(--cream);
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        
+        .cart-items {
+            min-height: 100px;
+            margin-bottom: 30px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            margin-bottom: 10px;
+        }
+        
+        .cart-item-info h4 {
+            color: var(--cream);
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--gold);
+        }
+        
+        .remove-item {
+            color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .remove-item:hover {
+            color: var(--gold);
+        }
+        
+        .cart-total {
+            text-align: right;
+            padding-top: 20px;
+            border-top: 1px solid var(--gold);
+        }
+        
+        .cart-total h4 {
+            color: var(--cream);
+            font-size: 20px;
+        }
+        
+        .cart-total span {
+            color: var(--gold);
+            font-size: 28px;
+            margin-left: 15px;
+        }
+        
+        .checkout-btn {
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .checkout-btn:hover {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 120px 0;
+            background: linear-gradient(rgba(10,10,10,0.95), rgba(10,10,10,0.95)),
+                        url('https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .contact-info h2 {
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            color: var(--gold);
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gold);
+        }
+        
+        .contact-item .phone-numbers {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-item .phone-numbers span {
+            color: var(--cream);
+            font-size: 16px;
+        }
+        
+        .address-box {
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+        }
+        
+        .address-box h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .address-box p {
+            color: var(--cream);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .map-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+        
+        .map-link:hover {
+            color: var(--cream);
+        }
+        
+        /* ===== COMMENTS SECTION ===== */
+        .comments {
+            padding: 120px 0;
+            background: var(--black);
+        }
+        
+        .comments-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .comment-card {
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .comment-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .comment-avatar i {
+            color: var(--black);
+            font-size: 30px;
+        }
+        
+        .comment-name {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .comment-date {
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .comment-text {
+            color: var(--cream);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .comment-rating {
+            color: var(--gold);
+            margin-top: 10px;
+        }
+        
+        .comment-form {
+            margin-top: 60px;
+            background: rgba(255,255,255,0.03);
+            padding: 40px;
+            border: 1px solid var(--gold);
+        }
+        
+        .comment-form h3 {
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212,175,55,0.3);
+            color: var(--cream);
+            font-size: 16px;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .submit-btn {
+            background: var(--gold);
+            color: var(--black);
+            padding: 15px 40px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--black);
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-col h3 {
+            color: var(--gold);
+            font-size: 24px;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+        }
+        
+        .footer-col p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: var(--cream);
+            font-size: 20px;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-links a:hover {
+            color: var(--black);
+            background: var(--gold);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+        
+        /* ===== 🌟🌟🌟 ENHANCED MOBILE RESPONSIVE - FULLY FIXED 🌟🌟🌟 ===== */
+        
+        /* Large Tablets (1200px and below) */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .hero-title {
+                font-size: 70px;
+            }
+            
+            .courses-grid,
+            .comments-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Tablets (992px and below) */
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 20px 30px;
+            }
+            
+            .mobile-menu-btn {
+                display: block !important;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: var(--black);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                transition: left 0.5s ease;
+                z-index: 1000;
+                box-shadow: 5px 0 30px rgba(0,0,0,0.5);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links a {
+                font-size: 18px;
+                margin: 10px 0;
+            }
+            
+            .book-btn {
+                margin-right: 15px;
+            }
+            
+            .contact-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-col {
+                text-align: center;
+            }
+        }
+        
+        /* Mobile (768px and below) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .navbar.scrolled {
+                padding: 15px 20px;
+            }
+            
+            .logo {
+                font-size: 28px;
+            }
+            
+            .logo span {
+                font-size: 10px;
+            }
+            
+            .book-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+                margin-right: 10px;
+            }
+            
+            .mobile-menu-btn {
+                font-size: 24px;
+            }
+            
+            .hero {
+                background-attachment: scroll;
+            }
+            
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .hero-subtitle {
+                font-size: 14px;
+                letter-spacing: 6px;
+            }
+            
+            .hero-year {
+                font-size: 18px;
+                letter-spacing: 4px;
+            }
+            
+            .hero-desc {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 0 20px;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+                padding: 14px 30px;
+                font-size: 15px;
+            }
+            
+            .offer-banner {
+                padding: 40px 0;
+            }
+            
+            .offer-banner h2 {
+                font-size: 32px;
+            }
+            
+            .offer-banner .offer-highlight {
+                font-size: 48px;
+            }
+            
+            .offer-banner p {
+                font-size: 18px;
+            }
+            
+            .courses,
+            .contact,
+            .comments {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .courses-grid,
+            .comments-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .course-card {
+                padding: 25px;
+            }
+            
+            .course-footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .add-to-cart {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .cart-section {
+                padding: 30px 20px;
+            }
+            
+            .cart-header h3 {
+                font-size: 24px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .address-box {
+                padding: 30px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .comment-card {
+                padding: 25px;
+            }
+            
+            .comment-form {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                gap: 40px;
+            }
+            
+            .footer-col h3 {
+                font-size: 22px;
+            }
+            
+            .footer-col p {
+                font-size: 13px;
+            }
+            
+            .cursor {
+                display: none;
+            }
+            
+            .preloader h1 {
+                font-size: 32px;
+            }
+            
+            .preloader p {
+                font-size: 12px;
+                letter-spacing: 3px;
+            }
+        }
+        
+        /* Small Mobile (480px and below) */
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 12px 15px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+            
+            .logo span {
+                font-size: 8px;
+                letter-spacing: 1px;
+            }
+            
+            .book-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+                margin-right: 8px;
+            }
+            
+            .mobile-menu-btn {
+                font-size: 22px;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 12px;
+                letter-spacing: 4px;
+            }
+            
+            .hero-year {
+                font-size: 16px;
+                letter-spacing: 3px;
+            }
+            
+            .hero-desc {
+                font-size: 14px;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+            
+            .offer-banner h2 {
+                font-size: 28px;
+            }
+            
+            .offer-banner .offer-highlight {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .course-title {
+                font-size: 22px;
+            }
+            
+            .course-price {
+                font-size: 20px;
+            }
+            
+            .cart-header h3 {
+                font-size: 22px;
+            }
+            
+            .cart-total span {
+                font-size: 24px;
+            }
+            
+            .footer-col h3 {
+                font-size: 20px;
+            }
+            
+            .footer-bottom p {
+                font-size: 12px;
+            }
+            
+            .preloader h1 {
+                font-size: 28px;
+            }
+            
+            .preloader p {
+                font-size: 10px;
+                letter-spacing: 2px;
+            }
+        }
+        
+        /* Extra Small Mobile (380px and below) */
+        @media (max-width: 380px) {
+            .navbar {
+                padding: 10px 12px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+            
+            .logo span {
+                font-size: 7px;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .hero-subtitle {
+                font-size: 10px;
+                letter-spacing: 3px;
+            }
+            
+            .preloader h1 {
+                font-size: 24px;
+            }
+        }
+        
+        /* Landscape Mode */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: 500px;
+                height: auto;
+                padding: 100px 0;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-buttons {
+                flex-direction: row;
+            }
+            
+            .nav-links {
+                padding: 20px 0;
+                justify-content: flex-start;
+            }
+        }
+        
+        /* Touch Device Optimizations */
+        @media (hover: none) {
+            .course-card:hover,
+            .add-to-cart:hover,
+            .btn-primary:hover,
+            .btn-secondary:hover,
+            .book-btn:hover,
+            .submit-btn:hover,
+            .social-links a:hover {
+                transform: none;
+            }
+            
+            .category-btn.active {
+                color: var(--gold);
+                border-bottom-color: var(--gold);
+            }
+        }
+        
+        /* iPhone Safe Area Support */
+        @supports (padding: max(0px)) {
+            .navbar {
+                padding-left: max(60px, env(safe-area-inset-left));
+                padding-right: max(60px, env(safe-area-inset-right));
+            }
+            
+            @media (max-width: 992px) {
+                .navbar {
+                    padding-left: max(30px, env(safe-area-inset-left));
+                    padding-right: max(30px, env(safe-area-inset-right));
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .navbar {
+                    padding-left: max(20px, env(safe-area-inset-left));
+                    padding-right: max(20px, env(safe-area-inset-right));
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .navbar {
+                    padding-left: max(15px, env(safe-area-inset-left));
+                    padding-right: max(15px, env(safe-area-inset-right));
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+    <div class="preloader-content">
+        <h1>N.H. INSTITUTE</h1>
+        <p>SINCE <span>2015</span></p>
+    </div>
+</div>
+
+<!-- CUSTOM CURSOR - HIDDEN ON MOBILE -->
+<div class="cursor" id="cursor"></div>
+
+<!-- NAVIGATION -->
+<nav class="navbar" id="navbar">
+    <a href="#" class="logo">
+        N.H. INSTITUTE
+        <span>COMPUTER EDUCATION</span>
+    </a>
+    
+    <div class="nav-links" id="navLinks">
+        <a href="#home">HOME</a>
+        <a href="#courses">COURSES</a>
+        <a href="#contact">CONTACT</a>
+        <a href="#comments">REVIEWS</a>
+    </div>
+    
+    <a href="#cart" class="book-btn" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i> CART <span id="cartCount">0</span>
+    </a>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-subtitle fade-in">WELCOME TO</div>
+        <h1 class="hero-title fade-in">
+            <span>N.H.</span> INSTITUTE
+        </h1>
+        <div class="hero-year fade-in">EST. 2015 · 10 YEARS</div>
+        <p class="hero-desc fade-in">
+            Premium Computer Education Center in Manglour. Professional Training Since 2015.
+        </p>
+        <div class="hero-buttons fade-in">
+            <a href="#courses" class="btn-primary">VIEW COURSES</a>
+            <a href="#contact" class="btn-secondary">CONTACT US</a>
+        </div>
+    </div>
+    
+    <div class="scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- OFFER BANNER -->
+<section class="offer-banner">
+    <div class="container">
+        <h2>SPECIAL OFFER</h2>
+        <div class="offer-highlight">2 DAYS FREE CLASS</div>
+        <p>Join Now & Start Your IT Career Today</p>
+    </div>
+</section>
+
+<!-- COURSES SECTION -->
+<section class="courses" id="courses">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-subtitle">OUR PROGRAMS</div>
+            <h2 class="section-title">Premium Courses</h2>
+        </div>
+        
+        <div class="courses-grid" id="coursesGrid">
+            <!-- Courses will be loaded here by JavaScript -->
+        </div>
+        
+        <!-- CART SECTION -->
+        <div class="cart-section" id="cartSection" style="display: none;">
+            <div class="cart-header">
+                <h3><i class="fas fa-shopping-cart" style="margin-right: 10px;"></i> YOUR CART</h3>
+                <span onclick="toggleCart()">CLOSE ✕</span>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be loaded here -->
+            </div>
+            
+            <div class="cart-total">
+                <h4>TOTAL: <span id="cartTotal">₹0</span></h4>
+            </div>
+            
+            <button class="checkout-btn" onclick="checkout()">
+                <i class="fab fa-whatsapp" style="margin-right: 10px;"></i> ENQUIRE VIA WHATSAPP
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-subtitle">GET IN TOUCH</div>
+            <h2 class="section-title">Contact Us</h2>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>REACH US</h2>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div class="phone-numbers">
+                        <span>📞 8923000548</span>
+                        <span>📞 9368141254</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@nhinstitute.com</span>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
+                </div>
+            </div>
+            
+            <div class="address-box">
+                <h3>OUR LOCATION</h3>
+                <p>
+                    <i class="fas fa-map-marker-alt" style="color: var(--gold); margin-right: 10px;"></i>
+                    Neoteric Public Junior High School<br>
+                    Moh. Lalbara, Manglour Town<br>
+                    Uttarakhand, India
+                </p>
+                <a href="https://maps.google.com/?q=Neoteric+Public+Junior+High+School+Manglour" target="_blank" class="map-link">
+                    <i class="fas fa-map-marked-alt"></i> VIEW ON GOOGLE MAPS →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMMENTS SECTION -->
+<section class="comments" id="comments">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-subtitle">STUDENT FEEDBACK</div>
+            <h2 class="section-title">What Our Students Say</h2>
+        </div>
+        
+        <div class="comments-grid" id="commentsGrid">
+            <!-- Comments will be loaded here by JavaScript -->
+        </div>
+        
+        <div class="comment-form">
+            <h3>LEAVE A REVIEW</h3>
+            <form id="commentForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <select required>
+                        <option value="">Select Course</option>
+                        <option>Basic Computer</option>
+                        <option>Tally ERP 9 & Prime</option>
+                        <option>Web Design</option>
+                        <option>Python Programming</option>
+                        <option>Java Programming</option>
+                        <option>C & C++</option>
+                        <option>Graphic Design</option>
+                        <option>PHP Programming</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <textarea rows="5" placeholder="Your Review" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <select required>
+                        <option value="">Rating</option>
+                        <option>★★★★★ - Excellent</option>
+                        <option>★★★★☆ - Very Good</option>
+                        <option>★★★☆☆ - Good</option>
+                        <option>★★☆☆☆ - Average</option>
+                        <option>★☆☆☆☆ - Poor</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">SUBMIT REVIEW</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>N.H. INSTITUTE</h3>
+                <p>Premium Computer Education Center in Manglour. Professional Training Since 2015.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>QUICK LINKS</h3>
+                <p><a href="#home" style="color: rgba(255,255,255,0.7); text-decoration: none;">Home</a></p>
+                <p><a href="#courses" style="color: rgba(255,255,255,0.7); text-decoration: none;">Courses</a></p>
+                <p><a href="#contact" style="color: rgba(255,255,255,0.7); text-decoration: none;">Contact</a></p>
+                <p><a href="#comments" style="color: rgba(255,255,255,0.7); text-decoration: none;">Reviews</a></p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>CONTACT</h3>
+                <p>8923000548</p>
+                <p>9368141254</p>
+                <p>info@nhinstitute.com</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>FOLLOW US</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 N.H. Institute of Computer Education. All rights reserved. | Manglour Town (U.K)</p>
+        </div>
+    </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+    // CURSOR - ONLY ON DESKTOP
+    if (window.innerWidth > 992) {
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', function(e) {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    }
+    
+    // PRELOADER
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            document.getElementById('preloader').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('preloader').style.display = 'none';
+            }, 1000);
+        }, 1500);
+    });
+    
+    // NAVBAR SCROLL
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
+    // MOBILE MENU
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
+            
+            const icon = this.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        document.addEventListener('click', function(event) {
+            if (!navLinks.contains(event.target) && 
+                !mobileMenuBtn.contains(event.target) && 
+                navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        if (window.innerWidth <= 992) {
+            navLinks.style.display = 'flex';
+            navLinks.classList.remove('active');
+        }
+    }
+    
+    // COURSE DATA
+    const courses = [
+        {
+            id: 1,
+            category: "BASIC",
+            title: "Basic Computer Course",
+            description: "Computer fundamentals, MS Office, Internet & Email",
+            icon: "fa-solid fa-computer",
+            features: ["Computer Fundamentals", "MS Word, Excel, PPT", "Internet & Email", "Typing"],
+            price: 4999,
+            tag: "BEGINNER"
+        },
+        {
+            id: 2,
+            category: "ACCOUNTING",
+            title: "Tally ERP 9 & Prime",
+            description: "Complete accounting software with GST",
+            icon: "fa-solid fa-calculator",
+            features: ["Tally ERP 9", "Tally Prime", "GST Returns", "Inventory"],
+            price: 8999,
+            tag: "PROFESSIONAL"
+        },
+        {
+            id: 3,
+            category: "DESIGN",
+            title: "Web Design",
+            description: "HTML, CSS, JavaScript, Bootstrap",
+            icon: "fa-solid fa-code",
+            features: ["HTML5 & CSS3", "JavaScript", "Bootstrap", "Responsive Design"],
+            price: 7999,
+            tag: "CREATIVE"
+        },
+        {
+            id: 4,
+            category: "PROGRAMMING",
+            title: "Python Programming",
+            description: "Python basics to advanced",
+            icon: "fa-brands fa-python",
+            features: ["Python Basics", "OOP", "Database", "Projects"],
+            price: 9999,
+            tag: "ADVANCED"
+        },
+        {
+            id: 5,
+            category: "PROGRAMMING",
+            title: "Java Programming",
+            description: "Core Java & OOP concepts",
+            icon: "fa-brands fa-java",
+            features: ["Core Java", "OOPs", "Exception Handling", "Multithreading"],
+            price: 9999,
+            tag: "ADVANCED"
+        },
+        {
+            id: 6,
+            category: "PROGRAMMING",
+            title: "C & C++ Programming",
+            description: "Fundamentals of C and C++",
+            icon: "fa-solid fa-code",
+            features: ["C Programming", "C++ Basics", "OOP", "Data Structures"],
+            price: 6999,
+            tag: "INTERMEDIATE"
+        },
+        {
+            id: 7,
+            category: "DESIGN",
+            title: "Graphic Design",
+            description: "Photoshop, Illustrator, CorelDraw",
+            icon: "fa-solid fa-paint-brush",
+            features: ["Photoshop", "Illustrator", "CorelDraw", "Logo Design"],
+            price: 6999,
+            tag: "CREATIVE"
+        },
+        {
+            id: 8,
+            category: "PROGRAMMING",
+            title: "PHP Programming",
+            description: "Server-side programming with MySQL",
+            icon: "fa-brands fa-php",
+            features: ["PHP Basics", "MySQL", "Dynamic Websites", "Forms"],
+            price: 8999,
+            tag: "WEB DEV"
+        }
+    ];
+    
+    // COMMENTS DATA
+    const comments = [
+        {
+            name: "Rahul Kumar",
+            date: "2 days ago",
+            course: "Python Programming",
+            text: "Excellent training center! Faculty is very supportive. Got placement assistance too.",
+            rating: 5
+        },
+        {
+            name: "Priya Sharma",
+            date: "1 week ago",
+            course: "Web Design",
+            text: "Best institute in Manglour. Practical approach to teaching. Highly recommended!",
+            rating: 5
+        },
+        {
+            name: "Amit Patel",
+            date: "2 weeks ago",
+            course: "Tally Prime",
+            text: "Great environment for learning. Lab facilities are top-notch. 5 stars!",
+            rating: 5
+        }
+    ];
+    
+    // CART
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // DISPLAY COURSES
+    function displayCourses() {
+        const coursesGrid = document.getElementById('coursesGrid');
+        coursesGrid.innerHTML = '';
+        
+        courses.forEach(course => {
+            const courseCard = `
+                <div class="course-card">
+                    <span class="course-tag">${course.tag}</span>
+                    <div class="course-icon">
+                        <i class="${course.icon}"></i>
+                    </div>
+                    <div class="course-category">${course.category}</div>
+                    <h3 class="course-title">${course.title}</h3>
+                    <p class="course-description">${course.description}</p>
+                    <ul class="course-features">
+                        ${course.features.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('')}
+                    </ul>
+                    <div class="course-footer">
+                        <div class="course-price">₹${course.price} <span>/course</span></div>
+                        <button class="add-to-cart" onclick="addToCart(${course.id})">
+                            <i class="fas fa-shopping-cart"></i> ADD TO CART
+                        </button>
+                    </div>
+                </div>
+            `;
+            coursesGrid.innerHTML += courseCard;
+        });
+    }
+    
+    // DISPLAY COMMENTS
+    function displayComments() {
+        const commentsGrid = document.getElementById('commentsGrid');
+        commentsGrid.innerHTML = '';
+        
+        comments.forEach(comment => {
+            const stars = '★'.repeat(comment.rating) + '☆'.repeat(5 - comment.rating);
+            const commentCard = `
+                <div class="comment-card">
+                    <div class="comment-avatar">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h4 class="comment-name">${comment.name}</h4>
+                    <div class="comment-date">${comment.date} • ${comment.course}</div>
+                    <p class="comment-text">"${comment.text}"</p>
+                    <div class="comment-rating">${stars}</div>
+                </div>
+            `;
+            commentsGrid.innerHTML += commentCard;
+        });
+    }
+    
+    // ADD TO CART
+    function addToCart(courseId) {
+        const course = courses.find(c => c.id === courseId);
+        const existingItem = cart.find(item => item.id === courseId);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({
+                ...course,
+                quantity: 1
+            });
+        }
+        
+        updateCart();
+        alert(`${course.title} added to cart!`);
+    }
+    
+    // REMOVE FROM CART
+    function removeFromCart(courseId) {
+        cart = cart.filter(item => item.id !== courseId);
+        updateCart();
+    }
+    
+    // UPDATE CART
+    function updateCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        displayCartItems();
+    }
+    
+    // UPDATE CART COUNT
+    function updateCartCount() {
+        const cartCount = document.getElementById('cartCount');
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        if (cartCount) cartCount.textContent = totalItems;
+    }
+    
+    // DISPLAY CART ITEMS
+    function displayCartItems() {
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5); padding: 30px;">Your cart is empty</p>';
+            if (cartTotal) cartTotal.textContent = '₹0';
+            return;
+        }
+        
+        let itemsHtml = '';
+        let total = 0;
+        
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            
+            itemsHtml += `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h4>${item.title}</h4>
+                        <div class="cart-item-price">₹${item.price} x ${item.quantity} = ₹${itemTotal}</div>
+                    </div>
+                    <div class="remove-item" onclick="removeFromCart(${item.id})">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                </div>
+            `;
+        });
+        
+        cartItems.innerHTML = itemsHtml;
+        if (cartTotal) cartTotal.textContent = `₹${total}`;
+    }
+    
+    // TOGGLE CART
+    function toggleCart() {
+        const cartSection = document.getElementById('cartSection');
+        if (cartSection.style.display === 'none') {
+            cartSection.style.display = 'block';
+            displayCartItems();
+            window.scrollTo({
+                top: cartSection.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        } else {
+            cartSection.style.display = 'none';
+        }
+    }
+    
+    // CHECKOUT
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Your cart is empty!');
+            return;
+        }
+        
+        let message = "Hello N.H. Institute! I'm interested in the following courses:\n\n";
+        
+        cart.forEach(item => {
+            message += `• ${item.title} (₹${item.price})\n`;
+        });
+        
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        message += `\nTotal Amount: ₹${total}\n\nPlease provide more information about enrollment.`;
+        
+        window.open(`https://wa.me/918923000548?text=${encodeURIComponent(message)}`, '_blank');
+    }
+    
+    // COMMENT FORM
+    document.getElementById('commentForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your review! It will be displayed soon.');
+        this.reset();
+    });
+    
+    // SMOOTH SCROLL
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // INITIALIZE
+    displayCourses();
+    displayComments();
+    updateCartCount();
+</script>
+
+</body>
+</html>
