@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <title>N.H. Institute of Computer Education | Premier Computer Training Institute</title>
     
     <!-- Fonts -->
@@ -69,21 +69,13 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
-        /* Navbar Styles - TRANSPARENT */
+        /* Navbar Styles */
         .navbar {
-            background: transparent;
-            padding: 20px 40px;
-            position: fixed;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 15px 40px;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
             z-index: 1000;
-            transition: background 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: rgba(30, 60, 114, 0.95);
-            backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
 
@@ -100,7 +92,6 @@
             font-size: 24px;
             font-weight: 700;
             text-decoration: none;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .logo span {
@@ -118,7 +109,6 @@
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .nav-links a::after {
@@ -145,22 +135,18 @@
             color: white;
             font-size: 24px;
             cursor: pointer;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Hero Section - को adjust किया ताकि navbar transparent दिखे */
+        /* Hero Section */
         .hero {
-            margin-top: 0;
-            padding-top: 100px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 150px 20px 100px;
+            padding: 100px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        /* Rest of the CSS remains the same */
         .hero::before {
             content: '';
             position: absolute;
@@ -209,6 +195,7 @@
             }
         }
 
+        /* Demo Banner */
         .demo-banner {
             background: var(--accent);
             color: white;
@@ -237,6 +224,7 @@
             }
         }
 
+        /* Section Styles */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -269,6 +257,7 @@
             width: 150px;
         }
 
+        /* Featured Courses Grid */
         .featured-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -326,6 +315,7 @@
             color: var(--accent);
         }
 
+        /* Contact Section */
         .contact-section {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
@@ -376,6 +366,7 @@
             color: var(--accent);
         }
 
+        /* Responsive */
         @media (max-width: 992px) {
             .nav-links {
                 display: none;
@@ -383,8 +374,7 @@
                 top: 70px;
                 left: 0;
                 width: 100%;
-                background: rgba(30, 60, 114, 0.95);
-                backdrop-filter: blur(10px);
+                background: var(--primary);
                 flex-direction: column;
                 padding: 20px;
                 text-align: center;
@@ -426,8 +416,8 @@
 <!-- Custom Cursor -->
 <div class="cursor" id="cursor"></div>
 
-<!-- Navbar - Now Transparent -->
-<nav class="navbar" id="navbar">
+<!-- Navbar -->
+<nav class="navbar">
     <div class="nav-container">
         <a href="index.html" class="logo float">N.H. <span>Institute</span></a>
         
@@ -570,16 +560,6 @@
             cursor.style.top = e.clientY + 'px';
         });
     }
-
-    // Navbar Scroll Effect
-    window.addEventListener('scroll', function() {
-        const navbar = document.getElementById('navbar');
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
 
     // Mobile Menu Toggle
     function toggleMenu() {
