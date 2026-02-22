@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Payment - N.H. Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); min-height: 100vh; }
+        :root { --primary: #1e3c72; --accent: #ff6b6b; --success: #28a745; }
+
+        .navbar { background: var(--primary); padding: 15px 40px; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: white; font-size: 24px; font-weight: 700; text-decoration: none; }
+        .logo span { color: var(--accent); }
+
+        .payment-container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .payment-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .payment-header h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .course-summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .price-tag {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .payment-method {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-method:hover,
+        .payment-method.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .btn-pay {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .btn-pay:hover {
+            background: #218838;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">N.H. <span>Institute</span></a>
+    </div>
+</nav>
+
+<div class="payment-container">
+    <div class="payment-card">
+        <div class="payment-header">
+            <h2>💰 Complete Payment</h2>
+            <p>Secure online payment gateway</p>
+        </div>
+
+        <div class="course-summary">
+            <h3>Python Programming Course</h3>
+            <p>Duration: 4 Months | Includes: Django, Flask, Data Science Basics</p>
+        </div>
+
+        <div class="price-tag">
+            ₹6,000
+        </div>
+
+        <div class="payment-methods">
+            <div class="payment-method active">Card</div>
+            <div class="payment-method">UPI</div>
+            <div class="payment-method">NetBanking</div>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <div class="form-group">
+                <label>Card Number</label>
+                <input type="text" placeholder="1234 5678 9012 3456" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px;">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                <input type="text" placeholder="MM/YY">
+                <input type="text" placeholder="CVV">
+            </div>
+        </div>
+
+        <button class="btn-pay" onclick="processPayment()">Pay ₹6,000</button>
+    </div>
+</div>
+
+<script>
+    function processPayment() {
+        alert('Payment successful! You will be redirected to exam portal.');
+        window.location.href = 'exam.html';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Online Exam - N.H. Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f8f9fa; color: #333; }
+        :root { --primary: #1e3c72; --secondary: #2a5298; --accent: #ff6b6b; --success: #28a745; }
+
+        .navbar { background: var(--primary); padding: 15px 40px; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: white; font-size: 24px; font-weight: 700; text-decoration: none; }
+        .logo span { color: var(--accent); }
+        
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .mobile-menu-btn { display: none; color: white; font-size: 24px; cursor: pointer; }
+
+        .exam-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .exam-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .timer {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .question-number {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            background: #f0f0f0;
+            border-color: var(--primary);
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .exam-footer {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        .btn-save {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-save:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .exam-container { padding: 10px; }
+            .timer { font-size: 24px; }
+            .exam-footer { flex-direction: column; }
+            .btn { width: 100%; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">N.H. <span>Institute</span></a>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="register.html">Register</a>
+            <a href="exam.html">Exam</a>
+            <a href="certificate.html">Certificate</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        
+        <div class="mobile-menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+<div class="exam-container">
+    <div class="exam-header">
+        <h1>📝 Python Programming Exam</h1>
+        <p>Student: Rahul Kumar | Roll No: NH24001</p>
+        <div class="timer" id="timer">45:00</div>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="question-card">
+        <div class="question-number">Question 1 of 10</div>
+        <div class="question-text">What is the output of print(2**3) in Python?</div>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q1" value="a"> a) 6
+            </label>
+            <label class="option">
+                <input type="radio" name="q1" value="b"> b) 8
+            </label>
+            <label class="option">
+                <input type="radio" name="q1" value="c"> c) 9
+            </label>
+            <label class="option">
+                <input type="radio" name="q1" value="d"> d) 5
+            </label>
+        </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question-card">
+        <div class="question-number">Question 2 of 10</div>
+        <div class="question-text">Which of the following is a mutable data type in Python?</div>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q2" value="a"> a) Tuple
+            </label>
+            <label class="option">
+                <input type="radio" name="q2" value="b"> b) String
+            </label>
+            <label class="option">
+                <input type="radio" name="q2" value="c"> c) List
+            </label>
+            <label class="option">
+                <input type="radio" name="q2" value="d"> d) Integer
+            </label>
+        </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question-card">
+        <div class="question-number">Question 3 of 10</div>
+        <div class="question-text">What is the correct file extension for Python files?</div>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q3" value="a"> a) .py
+            </label>
+            <label class="option">
+                <input type="radio" name="q3" value="b"> b) .python
+            </label>
+            <label class="option">
+                <input type="radio" name="q3" value="c"> c) .pt
+            </label>
+            <label class="option">
+                <input type="radio" name="q3" value="d"> d) .p
+            </label>
+        </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question-card">
+        <div class="question-number">Question 4 of 10</div>
+        <div class="question-text">Which keyword is used to define a function in Python?</div>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q4" value="a"> a) func
+            </label>
+            <label class="option">
+                <input type="radio" name="q4" value="b"> b) define
+            </label>
+            <label class="option">
+                <input type="radio" name="q4" value="c"> c) def
+            </label>
+            <label class="option">
+                <input type="radio" name="q4" value="d"> d) function
+            </label>
+        </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question-card">
+        <div class="question-number">Question 5 of 10</div>
+        <div class="question-text">What is the output of len("Hello") in Python?</div>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="q5" value="a"> a) 4
+            </label>
+            <label class="option">
+                <input type="radio" name="q5" value="b"> b) 5
+            </label>
+            <label class="option">
+                <input type="radio" name="q5" value="c"> c) 6
+            </label>
+            <label class="option">
+                <input type="radio" name="q5" value="d"> d) Error
+            </label>
+        </div>
+    </div>
+
+    <div class="exam-footer">
+        <button class="btn btn-submit" onclick="submitExam()">✅ Submit Exam</button>
+        <button class="btn btn-save" onclick="saveProgress()">💾 Save for Later</button>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+
+    // Timer
+    let timeLeft = 45 * 60; // 45 minutes in seconds
+    const timerElement = document.getElementById('timer');
+
+    function updateTimer() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        
+        if (timeLeft > 0) {
+            timeLeft--;
+            setTimeout(updateTimer, 1000);
+        } else {
+            submitExam(); // Auto submit when time's up
+        }
+    }
+    updateTimer();
+
+    function submitExam() {
+        // Calculate score (demo)
+        const score = Math.floor(Math.random() * 30) + 70; // Random score between 70-100
+        const grade = score >= 90 ? 'A+' : score >= 80 ? 'A' : score >= 70 ? 'B+' : 'B';
+        
+        // Store result in localStorage
+        localStorage.setItem('examResult', JSON.stringify({
+            score: score,
+            grade: grade,
+            course: 'Python Programming',
+            date: new Date().toLocaleDateString()
+        }));
+        
+        alert(`Exam submitted! Your score: ${score}% (Grade: ${grade})`);
+        
+        // Redirect to certificate page
+        window.location.href = 'certificate.html';
+    }
+
+    function saveProgress() {
+        alert('Your progress has been saved! You can resume later.');
+    }
+</script>
+
+</body>
+</html>

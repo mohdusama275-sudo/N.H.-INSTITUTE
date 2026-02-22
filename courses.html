@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Courses - N.H. Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f8f9fa; color: #333; }
+        :root { --primary: #1e3c72; --secondary: #2a5298; --accent: #ff6b6b; --success: #28a745; }
+
+        .navbar { background: var(--primary); padding: 15px 40px; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: white; font-size: 24px; font-weight: 700; text-decoration: none; }
+        .logo span { color: var(--accent); }
+        
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .mobile-menu-btn { display: none; color: white; font-size: 24px; cursor: pointer; }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .category-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 40px 0 20px 0;
+            padding-left: 10px;
+            border-left: 5px solid var(--accent);
+        }
+
+        /* सभी कोर्सेस के लिए स्क्वायर कार्ड्स */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            height: 100%;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .course-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            padding-right: 10px;
+        }
+
+        .course-desc {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-top: 1px dashed #eee;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .course-duration {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .course-duration i {
+            color: var(--accent);
+        }
+
+        .course-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .enroll-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .enroll-btn:hover {
+            background: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .container { padding: 20px; }
+            .courses-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">N.H. <span>Institute</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="register.html">Register</a>
+            <a href="exam.html">Exam</a>
+            <a href="certificate.html">Certificate</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <div class="mobile-menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="section-title">📚 All Courses</h1>
+
+    <!-- Basic Computer Courses -->
+    <h2 class="category-title">Basic Computer Courses</h2>
+    <div class="courses-grid">
+        <!-- Microsoft Office Suite -->
+        <div class="course-card">
+            <h3 class="course-title">Microsoft Office Suite</h3>
+            <p class="course-desc">Word, Excel, PowerPoint, Access. Complete office automation skills for professional use.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 3 Months</span>
+                <span class="course-price">₹2,500</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=ms-office'">Enroll Now</button>
+        </div>
+
+        <!-- Typing (Hindi & English) -->
+        <div class="course-card">
+            <h3 class="course-title">Typing (Hindi & English)</h3>
+            <p class="course-desc">Speed test certification included. Learn fast and accurate typing in both languages.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 2 Months</span>
+                <span class="course-price">₹1,500</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=typing'">Enroll Now</button>
+        </div>
+
+        <!-- Data Entry & Internet -->
+        <div class="course-card">
+            <h3 class="course-title">Data Entry & Internet</h3>
+            <p class="course-desc">Google Workspace, Online Forms, Internet basics. Practical training on real-world applications.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 2 Months</span>
+                <span class="course-price">₹2,000</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=data-entry'">Enroll Now</button>
+        </div>
+    </div>
+
+    <!-- Accounting & Business -->
+    <h2 class="category-title">Accounting & Business</h2>
+    <div class="courses-grid">
+        <!-- Tally Prime -->
+        <div class="course-card">
+            <h3 class="course-title">Tally Prime</h3>
+            <p class="course-desc">GST, Invoicing, Financial Accounting. Complete business accounting software training.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 3 Months</span>
+                <span class="course-price">₹4,500</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=tally'">Enroll Now</button>
+        </div>
+    </div>
+
+    <!-- Graphic Design -->
+    <h2 class="category-title">Graphic Design</h2>
+    <div class="courses-grid">
+        <!-- Photoshop -->
+        <div class="course-card">
+            <h3 class="course-title">Photoshop</h3>
+            <p class="course-desc">Image Editing, Digital Art, Photo Manipulation. Master Adobe Photoshop tools.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 2 Months</span>
+                <span class="course-price">₹3,500</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=photoshop'">Enroll Now</button>
+        </div>
+
+        <!-- CorelDRAW -->
+        <div class="course-card">
+            <h3 class="course-title">CorelDRAW</h3>
+            <p class="course-desc">Vector Graphics, Logo Design, Brochures. Professional graphic design software.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 2 Months</span>
+                <span class="course-price">₹3,500</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=coreldraw'">Enroll Now</button>
+        </div>
+
+        <!-- Canva -->
+        <div class="course-card">
+            <h3 class="course-title">Canva</h3>
+            <p class="course-desc">Social Media Designs, Presentations, Posters. Easy and professional design tool.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 1 Month</span>
+                <span class="course-price">₹2,000</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=canva'">Enroll Now</button>
+        </div>
+    </div>
+
+    <!-- Programming -->
+    <h2 class="category-title">Programming & Development</h2>
+    <div class="courses-grid">
+        <!-- C & C++ -->
+        <div class="course-card">
+            <h3 class="course-title">C & C++</h3>
+            <p class="course-desc">Basic to Advanced Programming. Learn fundamentals of programming with C and C++.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 3 Months</span>
+                <span class="course-price">₹4,000</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=c-cpp'">Enroll Now</button>
+        </div>
+
+        <!-- Java -->
+        <div class="course-card">
+            <h3 class="course-title">Java</h3>
+            <p class="course-desc">OOPs, Data Structures, Java Programming. Build strong foundation in Java.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 4 Months</span>
+                <span class="course-price">₹5,000</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=java'">Enroll Now</button>
+        </div>
+
+        <!-- Python -->
+        <div class="course-card">
+            <h3 class="course-title">Python</h3>
+            <p class="course-desc">Django, Flask, Data Science Basics. Most popular programming language.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 4 Months</span>
+                <span class="course-price">₹6,000</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=python'">Enroll Now</button>
+        </div>
+
+        <!-- PHP -->
+        <div class="course-card">
+            <h3 class="course-title">PHP</h3>
+            <p class="course-desc">Web Development with PHP and MySQL. Build dynamic websites.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 3 Months</span>
+                <span class="course-price">₹4,500</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=php'">Enroll Now</button>
+        </div>
+    </div>
+
+    <!-- Advanced Courses -->
+    <h2 class="category-title">Advanced Courses</h2>
+    <div class="courses-grid">
+        <!-- Advanced Excel -->
+        <div class="course-card">
+            <h3 class="course-title">Advanced Excel</h3>
+            <p class="course-desc">VBA, Macros, Dashboards, Pivot Tables. Become Excel expert.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 2 Months</span>
+                <span class="course-price">₹3,500</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=adv-excel'">Enroll Now</button>
+        </div>
+
+        <!-- PowerPoint with AI -->
+        <div class="course-card">
+            <h3 class="course-title">PowerPoint with AI</h3>
+            <p class="course-desc">AI Automation Tools, Smart Presentations. Create stunning presentations.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 1 Month</span>
+                <span class="course-price">₹2,500</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=ai-ppt'">Enroll Now</button>
+        </div>
+
+        <!-- ChatGPT for Productivity -->
+        <div class="course-card">
+            <h3 class="course-title">ChatGPT for Productivity</h3>
+            <p class="course-desc">AI-based Assistance, Prompt Engineering. Learn to use AI effectively.</p>
+            <div class="course-meta">
+                <span class="course-duration"><i class="far fa-calendar-alt"></i> 1 Month</span>
+                <span class="course-price">₹2,000</span>
+            </div>
+            <button class="enroll-btn" onclick="window.location.href='register.html?course=chatgpt'">Enroll Now</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
